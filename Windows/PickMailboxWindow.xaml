@@ -1,0 +1,55 @@
+﻿<Window x:Class="KT_IMAPClient.PickMailboxWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Pick a Mailbox" Height="270" Width="200"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="#121212">
+
+    <Window.Resources>
+        <Style x:Key="ListViewItemStyle2" TargetType="{x:Type ListViewItem}">
+            <Setter Property="Background" Value="#d4d4d4"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="MaxWidth" Value="150"/>
+            <Setter Property="Margin" Value="-100, 3, 0, 0"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" Value="White" />
+                    <Setter Property="Foreground" Value="Black" />
+                </Trigger>
+                <Trigger Property="IsSelected" Value="true">
+                    <Setter Property="Background" Value="Black" />
+                    <Setter Property="Foreground" Value="White" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <ListView Name="Mailboxes" Margin="0, 2, 0, 0" Width="290" Height="370" BorderThickness="0.1" Background="#222222" Foreground="Black" ItemContainerStyle="{StaticResource ListViewItemStyle2}" PreviewMouseLeftButtonUp="MailboxClicked" ItemsSource="{Binding}">
+            <ListView.View>
+                <GridView AllowsColumnReorder="False" >
+
+                    <GridView.ColumnHeaderContainerStyle >
+                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                            <Setter Property="Background" Value="#222222" />
+                            <Setter Property="Foreground" Value="White" />
+                            <Setter Property="FontWeight" Value="Bold" />
+                            <Setter Property="IsHitTestVisible" Value="False"/>
+                            <Setter Property="Margin" Value="-20, 0, 0, 5"/>
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+
+                    <GridViewColumn  Header="Your Mailboxes" Width="200"></GridViewColumn>
+                </GridView>
+
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
